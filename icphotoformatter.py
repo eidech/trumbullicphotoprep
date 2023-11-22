@@ -8,12 +8,16 @@
 import os
 from PIL import Image
 
-PHOTOSDIR = 'C:/Users/ceide/Desktop/Python Scripts/IC Photos/photos/'
+PHOTOSDIR = 'photos/'
 
 def main():
+    # Get the current script's directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
 
-    current_path = os.getcwd()
-    for root, dirs, files in os.walk(current_path, topdown=False):
+    # Make the photos dir path
+    photos_dir_path = os.path.join(script_dir, PHOTOSDIR)
+
+    for root, dirs, files in os.walk(photos_dir_path, topdown=False):
         for name in files:
             print(os.path.join(root, name))
             #if os.path.splitext(os.path.join(root, name))[1].lower() == ".tiff":

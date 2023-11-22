@@ -7,16 +7,22 @@
 
 import csv, os
 
-CSVFILE = 'C:/Users/ceide/Desktop/Python Scripts/IC Photos/photofiles.csv'
-PHOTOSDIR = 'C:/Users/ceide/Desktop/Python Scripts/IC Photos/photos/'
+CSVFILE = 'photofiles.csv'
+PHOTOSDIR = 'photos/'
 
 def main():
+    # Get the current script's directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Make the paths for files/directories
+    csv_file_path = os.path.join(script_dir, CSVFILE)
+    photos_dir_path = os.path.join(script_dir, PHOTOSDIR)
 
     # Dictionary for file name lookups
     filenamedict = {}
 
     # Open the CSV File
-    with open(CSVFILE, 'r') as csvfile:
+    with open(csv_file_path, 'r') as csvfile:
         # Create a dictionary with key-value pairs of current filename -> new filename
         reader = csv.DictReader(csvfile)
         for row in reader:
@@ -27,7 +33,7 @@ def main():
             filenamedict.update( { currfile: newfile } )
 
     # Iterate through files and rename
-    directory = os.fsencode(PHOTOSDIR)
+    directory = os.fsencode(photos_dir_path)
 
     for file in os.listdir(directory):
         renameFile(file, filenamedict)
