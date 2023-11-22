@@ -5,7 +5,7 @@
 ### Direct inquiries to ceide@trumbullps.org ###
 ################################################
 
-import csv, os
+import os
 from PIL import Image
 
 PHOTOSDIR = 'C:/Users/ceide/Desktop/Python Scripts/IC Photos/photos/'
